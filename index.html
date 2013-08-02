@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Verkoeling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img class="fan" src="fan.svg" alt="fan">
+    </div>
+    <div class="footer clearfix">
+        <div class="controls">
+            <!-- <a class="btn">0</a> -->
+            <a class="btn btn-togled" data-speed="1.75">1</a>
+            <a class="btn" data-speed="1.25">2</a>
+            <a class="btn" data-speed="0.75">3</a>
+        </div>
+        <div class="info">
+            <a href="http://martijnluinstra.nl/">Martijn Luinstra</a>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+    $(".controls .btn").click(function() {
+        $(".btn-togled").toggleClass("btn-togled");
+        $(this).toggleClass("btn-togled");
+
+        var speed = $(this).data("speed") + "s";
+        $(".fan").css({ "-moz-animation-duration": speed, "-webkit-animation-duration": speed, "-ms-animation-duration": speed, "animation-duration": speed })
+    });
+    </script>
+</body>
+</html>
