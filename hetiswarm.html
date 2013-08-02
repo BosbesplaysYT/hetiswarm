@@ -2,19 +2,21 @@
 <html lang="nl">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="mobileoptimized" content="0" />
     <title>Het is warm</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <img class="fan" src="fan.svg" alt="fan">
+        <img class="fan" src="fan.svg" alt="fan" data-speed="1">
     </div>
-    <div class="footer clearfix">
+    <div class="footer">
         <div class="controls">
             <!-- <a class="btn">0</a> -->
-            <a class="btn btn-togled" data-speed="1.75">1</a>
-            <a class="btn" data-speed="1.25">2</a>
-            <a class="btn" data-speed="0.75">3</a>
+            <a class="btn" data-speed="0">0</a>
+            <a class="btn btn-togled" data-speed="1">1</a>
+            <a class="btn" data-speed="3">2</a>
+            <a class="btn" data-speed="5">3</a>
         </div>
         <div class="info">
             <a href="http://martijnluinstra.nl/">Martijn Luinstra</a>
@@ -22,12 +24,31 @@
     </div>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
+    
     $(".controls .btn").click(function() {
         $(".btn-togled").toggleClass("btn-togled");
         $(this).toggleClass("btn-togled");
 
-        var speed = $(this).data("speed") + "s";
-        $(".fan").css({ "-moz-animation-duration": speed, "-webkit-animation-duration": speed, "-ms-animation-duration": speed, "animation-duration": speed })
+        $(".fan").data('speed', $(this).data("speed") );
+    });
+
+    $(function() {
+
+        var $fan = $('.fan'),
+            degree = 0,
+            timer;
+
+        function rotate() {    
+            $fan.css({ transform: 'rotate(' + degree + 'deg)'});
+
+            timer = setTimeout(function() {
+                degree += $fan.data("speed");
+                rotate();
+            },10 );
+        }
+
+        rotate();
+
     });
     </script>
 </body>
