@@ -1,3 +1,3 @@
 hetiswarm
 =========
-A small webpage with a spinning fan.
+A small webpage featuring a spinning fan.
