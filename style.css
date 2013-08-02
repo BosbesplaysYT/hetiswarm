@@ -14,7 +14,7 @@ body{
 
 .container{
     height: 100%;
-    padding: 25px 0px 100px 0px;
+    padding: 25px 10px 105px 10px;
     box-sizing:border-box;
     -moz-box-sizing:border-box;
     overflow: hidden;
@@ -32,7 +32,7 @@ img.fan{
 .footer{
     position: absolute;
     bottom: 0;
-    height: 100px;
+    height: 105px;
     width: 100%;
     padding: 25px 10px 10px 10px;
     box-sizing:border-box;
@@ -45,6 +45,7 @@ img.fan{
     float: right;
     font-size: 10px;
     margin-top: 10px;
+    line-height: 10px
 }
 
 .btn{
