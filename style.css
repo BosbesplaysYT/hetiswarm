@@ -48,6 +48,15 @@ img.fan{
     line-height: 10px
 }
 
+a,
+a:visited{
+    color: #999;
+}
+
+a:hover{
+    color: #666;
+}
+
 .btn{
     display: inline-block;
     margin: 0 5px;
@@ -55,10 +64,12 @@ img.fan{
     width: 50px;
     border-radius: 50%;
     vertical-align: middle;
-    background: #333;
     color: white;
-    font-weight: bold;
+    background: #333;
+    cursor: pointer;
     font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
     line-height: 50px;
 }
 
@@ -67,16 +78,11 @@ img.fan{
     color: white;
 }
 
+.btn:visited{
+    color: white;
+}
+
 .btn:hover{
     background: #111;
     color: #ccc;
-}
-
-a,
-a:visited{
-    color: #999;
-}
-
-a:hover{
-    color: #666;
 }
