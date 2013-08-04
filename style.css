@@ -15,8 +15,8 @@ body{
 .container{
     height: 100%;
     padding: 25px 10px 105px 10px;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
     overflow: hidden;
     text-align: center;
 }
@@ -31,12 +31,13 @@ img.fan{
 
 .footer{
     position: absolute;
+    left: 0;
     bottom: 0;
     height: 105px;
     width: 100%;
     padding: 25px 10px 10px 10px;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
     color: #999;
     text-align: center;
 }

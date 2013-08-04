@@ -12,7 +12,6 @@
     </div>
     <div class="footer">
         <div class="controls">
-            <!-- <a class="btn">0</a> -->
             <a href="#" class="btn" data-speed="0">0</a>
             <a href="#" class="btn btn-togled" data-speed="1">1</a>
             <a href="#" class="btn" data-speed="3">2</a>
@@ -25,11 +24,11 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
     
-    $(".controls .btn").click(function() {
-        $(".btn-togled").toggleClass("btn-togled");
-        $(this).toggleClass("btn-togled");
+    $('.controls .btn').click(function() {
+        $('.btn-togled').toggleClass('btn-togled');
+        $(this).toggleClass('btn-togled');
 
-        $(".fan").data('speed', $(this).data("speed") );
+        $('.fan').data('speed', $(this).data('speed') );
     });
 
     $(function() {
@@ -42,7 +41,7 @@
             $fan.css({ transform: 'rotate(' + degree + 'deg)'});
 
             timer = setTimeout(function() {
-                degree += $fan.data("speed");
+                degree += $fan.data('speed');
                 rotate();
             },10 );
         }
