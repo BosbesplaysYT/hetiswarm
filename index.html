@@ -1,54 +1,167 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="mobileoptimized" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Het is warm</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <img class="fan" src="fan.svg" alt="fan" data-speed="1">
-    </div>
-    <div class="footer">
-        <div class="controls">
-            <a href="#" class="btn" data-speed="0">0</a>
-            <a href="#" class="btn btn-togled" data-speed="1">1</a>
-            <a href="#" class="btn" data-speed="3">2</a>
-            <a href="#" class="btn" data-speed="5">3</a>
-        </div>
-        <div class="info">
-            <a href="//martijnluinstra.nl/">Martijn Luinstra</a>
-        </div>
-    </div>
-    <script src="//code.jquery.com/jquery-latest.js"></script>
-    <script>
-    
-    $('.controls .btn').click(function() {
-        $('.btn-togled').toggleClass('btn-togled');
-        $(this).toggleClass('btn-togled');
-
-        $('.fan').data('speed', $(this).data('speed') );
-    });
-
-    $(function() {
-
-        var $fan = $('.fan'),
-            degree = 0,
-            timer;
-
-        function rotate() {    
-            $fan.css({ transform: 'rotate(' + degree + 'deg)'});
-
-            timer = setTimeout(function() {
-                degree += $fan.data('speed');
-                rotate();
-            },10 );
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
         }
 
-        rotate();
+        body {
+            padding: 0;
+            margin: 0;
+            background: #ddd; 
+            color:black;
+            font: 14px Verdana, sans-serif;
+        }
 
+
+        svg {
+            shape-rendering: geometricPrecision;
+            fill-rule: evenodd;
+            clip-rule: evenodd;
+        }
+
+        svg path {
+            fill: black;
+        }
+
+        .container {
+            height: 100%;
+            padding: 25px 10px 105px 10px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .fan {
+            margin: 0 auto;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Info + controls */
+
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 105px;
+            width: 100%;
+            padding: 25px 10px 10px 10px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            color: #999;
+            text-align: center;
+        }
+
+        .info {
+            float: right;
+            font-size: 10px;
+            margin-top: 10px;
+            line-height: 10px
+        }
+
+        a,
+        a:visited {
+            color: #999;
+        }
+
+        a:hover {
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 0 5px;
+            height: 50px;
+            width: 50px;
+            border: none;
+            border-radius: 50%;
+            vertical-align: middle;
+            color: white;
+            background: #333;
+            cursor: pointer;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            line-height: 50px;
+            padding: 0;
+        }
+
+        .is-active {
+            background: #111;
+            color: white;
+        }
+
+        .btn:visited {
+            color: white;
+        }
+
+        .btn:hover {
+            background: #111;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <svg id="fan" class="fan" data-speed="1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 17293 17293">
+        <path class="fil0" d="M8890 6064c-84,428 -79,862 -64,1252 261,36 504,144 704,318l197 -203c1172,-1212 2441,-2524 4007,-2573 728,-23 1417,197 1989,591 582,402 1042,984 1297,1674 554,1502 200,2994 -480,3934 -230,317 -497,572 -779,744 -284,173 -584,262 -877,246 -474,-26 -928,-327 -1264,-989 -158,-311 -332,-592 -518,-844 -196,-267 -406,-501 -625,-706 -377,-354 -810,-532 -1247,-617 -428,-84 -862,-79 -1252,-64 -36,259 -147,506 -319,704 62,60 132,128 203,197 1212,1172 2524,2441 2573,4007 23,728 -197,1417 -591,1989 -402,582 -984,1042 -1674,1297 -1502,554 -2994,200 -3934,-480 -317,-230 -572,-497 -744,-779 -173,-284 -262,-584 -246,-877 26,-474 327,-928 989,-1264 311,-158 592,-332 844,-518 267,-196 501,-406 706,-625 354,-377 532,-810 617,-1247 84,-428 79,-862 64,-1252 -262,-36 -505,-145 -704,-319l-197 203c-1172,1212 -2441,2524 -4007,2573 -728,23 -1417,-197 -1989,-591 -582,-402 -1042,-984 -1297,-1674 -554,-1502 -200,-2994 480,-3934 230,-317 497,-572 779,-744 284,-173 584,-262 877,-246 474,26 928,327 1264,989 158,311 332,592 518,844 196,267 406,501 625,706 377,354 810,532 1248,617 428,84 862,79 1252,64 35,-262 142,-502 318,-704 -61,-59 -132,-128 -203,-197 -1212,-1172 -2524,-2441 -2573,-4007 -23,-728 197,-1417 591,-1989 402,-582 984,-1042 1674,-1297 1502,-554 2994,-200 3934,480 317,230 572,497 744,779 173,284 262,584 246,877 -26,474 -327,928 -989,1264 -311,158 -592,332 -844,518 -267,196 -501,406 -706,625 -354,377 -532,810 -618,1248zm-662 1932c-359,231 -463,710 -231,1069 231,359 710,463 1069,231 359,-231 463,-710 231,-1069 -231,-359 -710,-463 -1069,-231z">
+            <animateTransform
+                id="fan-animation"
+                attributeName="transform"
+                attributeType="XML"
+                type="rotate"
+                from="0 8646.5 8646.5"
+                to="-360 8646.5 8646.5"
+                dur="5s"
+                repeatCount="indefinite"
+            ></animateTransform>
+        </path>
+    </svg>
+</div>
+<div class="footer">
+    <div class="controls">
+        <button type="button" class="btn">0</button>
+        <button type="button" class="btn is-active" data-speed="5s">1</button>
+        <button type="button" class="btn" data-speed="2s">2</button>
+        <button type="button" class="btn" data-speed="1s">3</button>
+    </div>
+    <div class="info">
+        <a href="//martijnluinstra.nl/">Martijn Luinstra</a>
+    </div>
+</div>
+<script>
+    const svg = document.getElementById('fan');
+    const animation = document.getElementById('fan-animation');
+    const buttons = document.querySelectorAll('.controls .btn');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Toggle button state
+            buttons.forEach(function(btn) {
+                btn.classList.remove('is-active');
+            });
+            button.classList.add('is-active');
+
+            // Set animation speed
+            if (!button.dataset.speed) {
+                svg.pauseAnimations();
+            } else {
+                // Offset timing to prevent position jumping
+                const offset = ((animation.getCurrentTime() / animation.getSimpleDuration()) % 1);
+                animation.setAttribute('dur', button.dataset.speed);
+                svg.setCurrentTime(parseFloat(button.dataset.speed) * offset);
+                svg.unpauseAnimations();
+            }
+        });
     });
-    </script>
+</script>
 </body>
 </html>
